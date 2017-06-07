@@ -1,0 +1,167 @@
+<html><head><meta name="viewport" content="width=device-width, initial-scale=1"><link href=//fonts.googleapis.com/css?family=Raleway:400,300,600 rel=stylesheet type=text/css><link rel="stylesheet" type="text/css" href="../common/css/normalize.css"><link rel="stylesheet" type="text/css" href="../common/css/skeleton.css"><link rel="stylesheet" type="text/css" href="../common/css/wiki.css"><script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><title>Arch Max</title><meta charset="utf-8"/></head><body><div class"container"><a href="../"><img src="../common/logo.png"/></a></div><div class="mw-content-ltr container" dir="ltr" id="mw-content-text" lang="en"><h1>Arch Max</h1>
+
+<p>The Arch Max is an mbed enabled development board for rapid prototyping. 
+It's based on a STM32F407VET6 microcontroller with an ARM Cortex-M4F core running at 168MHz. It includes an open link to provide SWD debug, drag-n-drop programming and USB serial communication.
+</p>
+<h2>  Features  </h2>
+<ul><li> mbed enabled
+<ul><li> Online development tools
+</li><li> Easy to use C/C++ SDK
+</li><li> Lots of published libraries and projects
+</li></ul>
+</li><li> High performance STM32F407VET6
+<ul><li> ARM Cortex-M4 MCU with FPU at 168MHz
+</li><li> 512 KB Flash, 192 KB RAM
+</li></ul>
+</li><li> On-board open link for debug and programming
+<ul><li> Drag-n-drop programming
+</li><li> USB serial communication
+</li><li> SWD debug with GDB+ pyOCD/OpenOCD, Keil or IAR
+</li></ul>
+</li><li> Arduino form factor, compatible with lots of shields
+</li><li> Build-in Ethernet, USB and SD card slot for connectivity and data exchange
+</li></ul>
+<h2>  Specification  </h2>
+<table  cellspacing="0" width="80%">
+<tr>
+<th scope="col"> Item
+</th>
+<th scope="col"> Typical
+</th></tr>
+<tr>
+<th scope="row"> Work Voltage
+</th>
+<td> 5V
+</td></tr>
+<tr>
+<th scope="row"> Microcontroller
+</th>
+<td> STM32F407VET6
+</td></tr>
+<tr>
+<th scope="row"> Flash Memory
+</th>
+<td> 512kB
+</td></tr>
+<tr>
+<th scope="row"> RAM
+</th>
+<td> 192kB
+</td></tr>
+<tr>
+<th scope="row"> UART
+</th>
+<td> 4
+</td></tr>
+<tr>
+<th scope="row"> I2C
+</th>
+<td> 3
+</td></tr>
+<tr>
+<th scope="row"> SPI
+</th>
+<td> 3
+</td></tr>
+<tr>
+<th scope="row"> CAN
+</th>
+<td> 2
+</td></tr>
+<tr>
+<th scope="row"> SDIO
+</th>
+<td> 1
+</td></tr>
+<tr>
+<th scope="row"> Camera interface
+</th>
+<td> 1
+</td></tr>
+<tr>
+<th scope="row"> Eth
+</th>
+<td> 1
+</td></tr>
+<tr>
+<th scope="row"> ADC Channels
+</th>
+<td> 8
+</td></tr>
+<tr>
+<th scope="row"> I/O pins
+</th>
+<td>40
+</td></tr>
+<tr>
+<th scope="row"> Digital I/O Max Input Voltage
+</th>
+<td> 5.0V
+</td></tr>
+<tr>
+<th scope="row"> Diameter
+</th>
+<td> 90mm x 44mm
+</td></tr></table>
+<h2>  4. Pin definition </h2>
+<p><img src="img/Arch_Max_Pinout.png" width="1000"/>
+</p>
+<h2>  Usage </h2>
+<p><img src="img/Get_started_with_mbed.png" width="1288"/>
+</p>
+<ol><li> Click <a href="https://developer.mbed.org/compiler/#import:/teams/mbed/code/mbed_blinky/;platform:Seeed-Arch-MAX">this link</a> to <b>login or signup to mbed</b>
+</li><li> Import the mbed_blinky program
+</li><li> Click the <b>Compile</b> icon of the top toolbar to compile the program, then download a compiled hex file.
+</li><li> Drag-n-drop the downloaded bin file into the MBED disk
+</li></ol>
+<p>You can open <b>main.cpp</b> to change the program. For example, use the following code to blink the LED every 0.1s
+</p>
+<pre>
+#include "mbed.h"
+
+DigitalOut led(LED1);           // on-board led is connected to D13
+
+int main()
+{
+    while (true) {
+        led = !led;
+        wait(0.1);
+    }
+}
+</pre>
+<h2>  Debug </h2>
+<p>To enable SWD debug or to get debug message through USB Virtual serial, please install <a href="https://developer.mbed.org/handbook/Windows-serial-configuration">the driver from mbed</a>.
+</p>
+<h2>  6. Update or Restore Firmware </h2>
+<p>The latest firmware version for the Arch Max is v0203 built at Oct 8  2014. To check your firmware version and built date, open the MBED.HTM file of your MBED disk in a text editor.
+</p><p><a href="https://developer.mbed.org/media/uploads/yihui/lpc11u35_nrf51822_if_mbed_v203_20141008.bin">The firmware v0203 2014-10-08 for Arch Max</a>
+</p>
+<ul><li> Hold the Arch Max's button and power on it
+</li><li> A CRP DISABLD disk will show
+<ul><li> On Windows, replace firmware.bin with the above firmware
+</li><li> On Linux/Mac, use command: <b>dd if={new_firmware.bin} of={firmware.bin} conv=notrunc</b>
+</li></ul>
+</li></ul>
+<h2>  Version </h2>
+<table>
+<tr>
+<th> Name </th>
+<th> Version </th>
+<th> Note
+</th></tr>
+<tr>
+<td> Arch Max v1.0 </td>
+<td> v1.0 </td>
+<td> 5V power supplier didn't connect to USB power, user should connect to ext-power
+</td></tr>
+<tr>
+<td> <a href="/Arch_Max_v1.1">Arch Max v1.1</a> </td>
+<td> v1.1 </td>
+<td> 5V power supplier can connect to USB power
+</td></tr></table>
+<h2>  Resources </h2>
+<ul><li><a href="res/ARCH_Max.zip">Schematics Eagle file for ARCH Max</a>
+</li><li><a href="res/Arch_Max.pdf">Schematics PDF file for ARCH Max</a>
+</li><li><a href="res/STM32F407.pdf">STM32F407 datasheet</a>
+</li></ul>
+Copyright (c) 2008-2016 Seeed Development Limited (<a href="http://www.seeedstudio.com">www.seeedstudio.com</a> / <a href="http://www.seeed.cc">www.seeed.cc</a>)<h6>This static html page was created from http://www.seeedstudio.com/wiki</h6></div></body></html>
